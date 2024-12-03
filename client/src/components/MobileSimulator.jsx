@@ -3,10 +3,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { FaHome, FaSearch, FaUser } from "react-icons/fa";
 import "../style.css";
 import HomePage from "./HomePage/Home";
+import SearchPage from "./SearchPage/Search";
 
 const MobileAppSimulator = () => {
-
-//   const [footerOption, setFooterOption] = useState("");
+  const [footerOption, setFooterOption] = useState("Home");
 
   return (
     <div className="mobile-frame d-flex flex-column">
@@ -17,13 +17,14 @@ const MobileAppSimulator = () => {
 
       {/* Main Content */}
       <main className="mobile-content flex-grow-1 bg-light d-flex flex-column align-items-center overflow-auto">
-        <HomePage></HomePage>
+        {footerOption === "Home" && <HomePage />}
+        {footerOption === "Search" && <SearchPage />}
       </main>
 
       {/* Footer */}
       <footer className="mobile-footer text-white d-flex justify-content-around align-items-center">
-        <FaHome className="icon" />
-        <FaSearch className="icon" />
+        <FaHome onClick={() => setFooterOption("Home")} className="icon" />
+        <FaSearch onClick={() => setFooterOption("Search")} className="icon" />
         <FaUser className="icon" />
       </footer>
     </div>

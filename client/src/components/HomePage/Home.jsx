@@ -30,7 +30,10 @@ const HomePage = () => {
       </div>
 
       {/* User Groups Section */}
-      <div className="mb-4" style={{ maxHeight: "200px", overflowY: "auto" }}>
+      <div
+        className="vertical-scrollable mb-4"
+        style={{ maxHeight: "200px", overflowY: "auto" }}
+      >
         <div className="card-body">
           <ul className="list-unstyled">
             <li className="d-flex align-items-start mb-3">
@@ -77,9 +80,7 @@ const HomePage = () => {
       </div>
 
       {/* Floating + Icon */}
-      <div
-        className="floating-icon"
-      >
+      <div className="floating-icon">
         <FaPlus />
       </div>
     </div>

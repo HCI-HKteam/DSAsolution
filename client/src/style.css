@@ -18,7 +18,7 @@
 
 /* Mobile Content Scrollable */
 .mobile-content {
-  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-y: hidden; /* Enable vertical scrolling */
   overflow-x: hidden; /* Prevent horizontal scrolling */
   padding: 10px;
   max-height: calc(100% - 120px); /* Adjust for header and footer heights */

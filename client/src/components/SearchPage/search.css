@@ -1,0 +1,89 @@
+.scrollable-cards {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto; /* Horizontal scroll */
+    white-space: nowrap; /* Ensure cards stay inline */
+    padding: 10px 0;
+    width: 100%;
+  }
+  
+  .scrollable-cards::-webkit-scrollbar {
+    height: 6px;
+  }
+  
+  .scrollable-cards::-webkit-scrollbar-thumb {
+    background: #3cacae;
+    border-radius: 4px;
+  }
+  
+  .scrollable-cards::-webkit-scrollbar-thumb:hover {
+    background: #C26DBC;
+  }
+
+
+/* Other Groups Section */
+.vertical-scrollable {
+  max-height: 300px; /* Set a max-height for vertical scrolling */
+  overflow-y: auto;
+}
+
+.vertical-scrollable {
+  max-height: 300px; /* Adjust based on container */
+  overflow-y: auto;
+  padding-right: 10px; /* Space for scrollbar */
+}
+
+.vertical-scrollable::-webkit-scrollbar {
+  width: 8px;
+}
+
+.vertical-scrollable::-webkit-scrollbar-thumb {
+  background-color: #3cacae;
+  border-radius: 4px;
+}
+
+.vertical-scrollable::-webkit-scrollbar-thumb:hover {
+    background: #C26DBC;
+  }
+
+.group-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.group-profile {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.group-content {
+  flex-grow: 1;
+  margin-left: 10px;
+}
+
+
+.floating-icon-row {
+    background-color: #c26dbc;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    font-size: 24px;
+    transition: transform 0.2s;
+  }
+
+  .floating-icon-row:hover {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+    background-color: #9fe7ed; /* Lighten the background on hover */
+  }
+  
