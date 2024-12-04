@@ -12,7 +12,7 @@ const MobileAppSimulator = () => {
     <div className="mobile-frame d-flex flex-column">
       {/* Header */}
       <header className="mobile-header text-white d-flex align-items-center justify-content-center">
-        <h4>DSA</h4>
+      <img src="logo.png" alt="Logo" className="logo" />
       </header>
 
       {/* Main Content */}

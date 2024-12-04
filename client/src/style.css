@@ -42,3 +42,8 @@
   transform: scale(1.2);
   color: #3cacae;
 }
+
+.logo {
+  max-width: 25%;
+  height: auto;
+}
