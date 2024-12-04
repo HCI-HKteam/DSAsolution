@@ -35,7 +35,7 @@ const HomePage = () => {
         style={{ maxHeight: "200px", overflowY: "auto" }}
       >
         <div className="card-body">
-        <h5 className="text-right">Your Groups</h5>
+        <h5 className="text-right">Your Groups: </h5>
           <hr />
           <ul className="list-unstyled">
             <li className="d-flex align-items-start mb-3">
