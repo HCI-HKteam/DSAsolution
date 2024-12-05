@@ -16,7 +16,7 @@ async function getAllGroups() {
   }
 }
 
-// Function to fetch all users
+
 async function getUsers() {
   try {
     const response = await fetch(`${BASE_URL}/users`);

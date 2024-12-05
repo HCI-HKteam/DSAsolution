@@ -8,7 +8,7 @@ import SearchPage from "./components/SearchPage/Search";
 function App() {
   
     return (
-      <Router>
+      
       <div className="d-flex justify-content-center align-items-center vh-100 bg-light">
         {/* Passa le rotte come children */}
         <MobileAppSimulator>
@@ -17,11 +17,11 @@ function App() {
             <Route index element={<HomePage />} />
             {/* GroupPage route with dynamic group name */}
             <Route path='/search' element={<SearchPage />}/>
-            <Route path='/software-engineering' element={<GroupPage />} />
+            <Route path='/group' element={<GroupPage />} />
           </Routes>
         </MobileAppSimulator>
       </div>
-    </Router>
+    
   );
   }
 export default App;

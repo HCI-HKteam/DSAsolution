@@ -5,6 +5,7 @@ import "../style.css";
 import HomePage from "./HomePage/Home";
 import SearchPage from "./SearchPage/Search";
 import CreateGroup from "./CreateGroupPage";
+import GroupPage from "./GroupPage/Group";
 
 
 const MobileAppSimulator = ({children}) => {
@@ -25,6 +26,7 @@ const MobileAppSimulator = ({children}) => {
           <HomePage setFooterOption={setFooterOption} />
         )}
         {footerOption === "Search" && <SearchPage />}
+        {footerOption === "Group" && <GroupPage setFooterOption={setFooterOption}/>}
         {footerOption === "CreateGroup" && <CreateGroup setFooterOption={setFooterOption} />}
       </main>
 
