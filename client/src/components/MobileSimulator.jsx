@@ -4,10 +4,14 @@ import { FaHome, FaSearch, FaUser } from "react-icons/fa";
 import "../style.css";
 import HomePage from "./HomePage/Home";
 import SearchPage from "./SearchPage/Search";
+import GroupPage from "./GroupPage/Group";
 
-const MobileAppSimulator = () => {
+
+const MobileAppSimulator = ({children}) => {
   const [footerOption, setFooterOption] = useState("Home");
+  
 
+  
   return (
     <div className="mobile-frame d-flex flex-column">
       {/* Header */}
@@ -17,8 +21,11 @@ const MobileAppSimulator = () => {
 
       {/* Main Content */}
       <main className="mobile-content flex-grow-1 bg-light d-flex flex-column align-items-center overflow-auto">
-        {footerOption === "Home" && <HomePage />}
+        {footerOption === "Home" && <HomePage/>} 
         {footerOption === "Search" && <SearchPage />}
+        {footerOption === "Group" && <GroupPage/>} 
+
+        
       </main>
 
       {/* Footer */}

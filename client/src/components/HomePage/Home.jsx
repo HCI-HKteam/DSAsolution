@@ -1,9 +1,16 @@
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FaPlus } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./home.css";
 
+
 const HomePage = () => {
+  const navigate = useNavigate();
+
+  const handleGroupClick = (groupName) => {
+    navigate(`/software-engineering`);
+  }
   return (
     <div className="p-3">
       {/* Header Row */}
@@ -38,7 +45,10 @@ const HomePage = () => {
         <h5 className="text-right">Your Groups: </h5>
           <hr />
           <ul className="list-unstyled">
-            <li className="d-flex align-items-start mb-3">
+            <li className="d-flex align-items-start mb-3"
+             onClick={() => handleGroupClick("software-engineering")}
+             style={{ cursor: "pointer" }}
+             >
               <img
                 src="../../../public/profile1.jpg"
                 alt="Group Icon"
@@ -47,9 +57,9 @@ const HomePage = () => {
                 height="50"
               />
               <div>
-                <div className="group-name">Software Engineering</div>
+              <div className="group-name">Software Engineering</div>
                 <div className="group-level">Beginners</div>
-              </div>
+                </div>
             </li>
             <li className="d-flex align-items-center mb-2">
               <img
