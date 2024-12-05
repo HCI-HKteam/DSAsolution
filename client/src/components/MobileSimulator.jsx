@@ -6,7 +6,7 @@ import HomePage from "./HomePage/Home";
 import SearchPage from "./SearchPage/Search";
 import CreateGroup from "./CreateGroupPage";
 import GroupPage from "./GroupPage/Group";
-
+import ProfilePage from "./Profile/Profile";
 
 const MobileAppSimulator = ({children}) => {
   const [footerOption, setFooterOption] = useState("Home");  
