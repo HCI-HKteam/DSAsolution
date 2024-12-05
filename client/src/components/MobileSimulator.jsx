@@ -5,13 +5,10 @@ import "../style.css";
 import HomePage from "./HomePage/Home";
 import SearchPage from "./SearchPage/Search";
 import CreateGroup from "./CreateGroupPage";
-
+import ProfilePage from "./Profile/Profile";
 
 const MobileAppSimulator = ({children}) => {
-  const [footerOption, setFooterOption] = useState("Home");
-  
-
-  
+  const [footerOption, setFooterOption] = useState("Home");  
   return (
     <div className="mobile-frame d-flex flex-column ">
       {/* Header */}
@@ -26,13 +23,14 @@ const MobileAppSimulator = ({children}) => {
         )}
         {footerOption === "Search" && <SearchPage />}
         {footerOption === "CreateGroup" && <CreateGroup setFooterOption={setFooterOption} />}
+        {footerOption === "Profile" && <ProfilePage/>}
       </main>
 
       {/* Footer */}
       <footer className="mobile-footer text-white d-flex justify-content-around align-items-center">
         <FaHome onClick={() => setFooterOption("Home")} className="icon" />
         <FaSearch onClick={() => setFooterOption("Search")} className="icon" />
-        <FaUser className="icon" />
+        <FaUser onClick={() => setFooterOption("Profile")} className="icon"/>
       </footer>
     </div>
   );

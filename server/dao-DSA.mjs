@@ -1,6 +1,6 @@
 import { url } from 'inspector';
 import db from './db.mjs';
-import { group, user, Challenge } from './DSAmodel.mjs';
+import { group, Challenge } from './DSAmodel.mjs';
 
 // Funzione per ottenere tutti i gruppi
 export function getAllGroups(db) {
@@ -27,31 +27,6 @@ export function getAllGroups(db) {
             });
     
             resolve(groups); // Risolviamo la Promise con i gruppi ottenuti
-        });
-    });
-}
-
-// Funzione per ottenere tutti gli utenti
-export function getUsers(db) {
-    return new Promise((resolve, reject) => {
-        let query = "SELECT * FROM users";
-    
-        db.all(query, [], (err, rows) => {
-            if (err) {
-                return reject(err); // Rifiutiamo la Promise se c'è un errore
-            }
-    
-            let users = rows.map(row => {
-                return new user(
-                    row.id, 
-                    row.name, 
-                    row.surname, 
-                    row.university, 
-                    row.SLD
-                );
-            });
-    
-            resolve(users); // Risolviamo la Promise con gli utenti ottenuti
         });
     });
 }
@@ -231,33 +206,6 @@ export function getGroupBySLD(db, SLD) {
             );
         
             resolve(group); // Risolviamo la Promise con il gruppo ottenuto
-        });
-    });
-}
-
-// Funzione per ottenere un utente per un level:
-export function getUserByLevel(db, level) {
-    return new Promise((resolve, reject) => {
-        let query = "SELECT * FROM users WHERE level = ?";
-    
-        db.get(query, [level], (err, row) => {
-            if (err) {
-                return reject(err); // Rifiutiamo la Promise se c'è un errore
-            }
-        
-            if (row === undefined) {
-                reject(new Error("Not found")); // Rifiutiamo la Promise se non troviamo l'utente
-            }
-        
-            let user = new user(
-                row.id, 
-                row.name, 
-                row.surname, 
-                row.university, 
-                row.SLD
-            );
-        
-            resolve(user); // Risolviamo la Promise con l'utente ottenuto
         });
     });
 }
