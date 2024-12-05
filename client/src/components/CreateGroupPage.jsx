@@ -1,53 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaQuestionCircle, FaArrowLeft } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { addGroup } from "../../API.mjs";
 
 const CreateGroup = ({ setFooterOption }) => {
-  const [isMandatoryWarningVisible, setMandatoryWarningVisible] =
-    useState(false);
-  const [tooltipModal, setTooltipModal] = useState({
-    visible: false,
-    text: "",
-  });
-  const [mandatoryNoteClass, setMandatoryNoteClass] = useState(
-    "form-items text-muted"
-  );
-
-  const handleCreate = async (e) => {
-    e.preventDefault();
-    const name = document.getElementById("group-name").value;
-    const university = document.getElementById("university").value;
-    const level = document.getElementById("level").value;
-    const SLD = document.getElementById("special-needs").value;
-    const description = document.getElementById("description").value;
-    const picture = ""; // Placeholder, replace with actual file input handling.
-    const number_of_participants =
-      document.getElementById("max-participants").value || null;
-    const joined = false;
-
-    if (!name || !university || !level || !SLD) {
-      setMandatoryNoteClass("form-items text-danger");
-      setMandatoryWarningVisible(true);
-      return;
-    }
-
-    const result = await addGroup(
-      name,
-      level,
-      university,
-      SLD,
-      description,
-      picture,
-      number_of_participants,
-      joined
-    );
-    if (result) {
-      alert("Group added successfully!");
-      setFooterOption("Home");
-    }
-  };
-
   return (
     <div className="p-3">
       {/* Header */}
@@ -62,12 +17,12 @@ const CreateGroup = ({ setFooterOption }) => {
       <hr />
 
       {/* Form */}
-      <form onSubmit={handleCreate}>
-        {/* Picture Upload and Group Details */}
+      <form>
+        {/* Row: Picture Upload + Group Name and University */}
         <div className="row mb-3">
           <div className="col-md-4 text-center">
             <div
-              className="form-items border border-2 rounded d-flex align-items-center justify-content-center"
+              className="border border-2 rounded d-flex align-items-center justify-content-center"
               style={{
                 width: "80px",
                 height: "100px",
@@ -80,8 +35,13 @@ const CreateGroup = ({ setFooterOption }) => {
             <input
               type="file"
               id="group-pic"
-              className="form-items form-control mt-2"
-              style={{ width: "80px", height: "30px", fontSize: "10px" }}
+              className="form-control mt-2"
+              style={{
+                marginLeft: "3px",
+                width: "80px",
+                height: "30px",
+                fontSize: "10px",
+              }}
             />
           </div>
 
@@ -95,6 +55,7 @@ const CreateGroup = ({ setFooterOption }) => {
                 id="group-name"
                 className="form-items form-control"
                 placeholder="Enter group name"
+                required
               />
             </div>
             <div>
@@ -106,59 +67,45 @@ const CreateGroup = ({ setFooterOption }) => {
                 id="university"
                 className="form-items form-control"
                 placeholder="Enter university name"
+                required
               />
             </div>
           </div>
         </div>
 
-        {/* Level */}
+        {/* Row: Level Dropdown */}
         <div className="row mb-3">
           <div className="form-items">
             <label
               htmlFor="level"
               className="form-items form-label d-flex align-items-center"
             >
-              Level*{" "}
-              <FaQuestionCircle
-                className="help-icon ms-2"
-                style={{ cursor: "pointer" }}
-                onClick={() =>
-                  setTooltipModal({
-                    visible: true,
-                    text: "Selecting the appropriate difficulty level for your study group helps tailor the content and discussions to the participants' current knowledge and AI-generated challenges.",
-                  })
-                }
-              />
+              Level* <FaQuestionCircle className="ms-2 text-muted" />
             </label>
-            <select id="level" className="form-items form-control">
+            <select id="level" className="form-items form-select" required>
               <option value="">Select level</option>
               <option value="Beginner">Beginner</option>
               <option value="Intermediate">Intermediate</option>
               <option value="Advanced">Advanced</option>
+              <option value="None">None</option>
             </select>
           </div>
         </div>
 
-        {/* Special Needs */}
+        {/* Row: Special Needs Dropdown */}
         <div className="row mb-3">
           <div className="form-items">
             <label
               htmlFor="special-needs"
-              className="form-items form-label d-flex align-items-center"
+              className="form-items  form-label d-flex align-items-center"
             >
-              Special Needs*{" "}
-              <FaQuestionCircle
-                className="help-icon ms-2"
-                style={{ cursor: "pointer" }}
-                onClick={() =>
-                  setTooltipModal({
-                    visible: true,
-                    text: "Selecting the appropriate type of SLD helps divide students into study groups tailored to their specific learning needs.",
-                  })
-                }
-              />
+              Special Needs* <FaQuestionCircle className="ms-2 text-muted" />
             </label>
-            <select id="special-needs" className="form-items form-control form-label">
+            <select
+              id="special-needs"
+              className="form-items form-select"
+              required
+            >
               <option value="">Select special need</option>
               <option value="Dyslexia">Dyslexia</option>
               <option value="Dysgraphia">Dysgraphia</option>
@@ -169,9 +116,9 @@ const CreateGroup = ({ setFooterOption }) => {
         </div>
 
         {/* Row: Max Participants */}
-        <div className="mb-3 d-flex flex-column">
+        <div className="form-items mb-3 d-flex flex-column">
           <div
-            className="d-flex form-label form-items"
+            className="d-flex "
             style={{ gap: "10px", marginBottom: "-15px" }}
           >
             <label
@@ -202,20 +149,23 @@ const CreateGroup = ({ setFooterOption }) => {
           </small>
         </div>
 
-        <div className="mb-3">
-          <label htmlFor="description" className="form-items form-label d-flex">
-            Description
-          </label>
-          <textarea
-            id="description"
-            className="form-items form-control"
-            rows="3"
-            placeholder="Enter description"
-          ></textarea>
+        {/* Row: Description */}
+        <div className="row mb-3">
+          <div className="form-items col-md-12">
+            <label htmlFor="description" className="form-items form-label">
+              Description
+            </label>
+            <textarea
+              id="description"
+              className="form-items form-control"
+              rows="3"
+              placeholder="Enter group description"
+            ></textarea>
+          </div>
         </div>
 
-        {/* Mandatory Note */}
-        <p className={mandatoryNoteClass}>* Mandatory fields to fill.</p>
+        {/* Mandatory Fields Note */}
+        <p className="form-items text-muted ">* Mandatory fields to fill.</p>
 
         {/* Create Button */}
         <div className="text-center mb-3">
@@ -224,58 +174,6 @@ const CreateGroup = ({ setFooterOption }) => {
           </button>
         </div>
       </form>
-
-      {/* Mandatory Warning Modal */}
-      {isMandatoryWarningVisible && (
-        <div
-          style={{
-            position: "fixed",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            width: "250px",
-            padding: "20px",
-            backgroundColor: "#fff",
-            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
-            borderRadius: "8px",
-            zIndex: 1000,
-          }}
-        >
-          <p>Please fill out all mandatory fields.</p>
-          <button
-            className="btn btn-secondary"
-            onClick={() => setMandatoryWarningVisible(false)}
-          >
-            OK
-          </button>
-        </div>
-      )}
-
-      {/* Tooltip Modal */}
-      {tooltipModal.visible && (
-        <div
-          style={{
-            position: "fixed",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            width: "250px",
-            padding: "20px",
-            backgroundColor: "#fff",
-            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
-            borderRadius: "8px",
-            zIndex: 1000,
-          }}
-        >
-          <p>{tooltipModal.text}</p>
-          <button
-            className="btn btn-secondary"
-            onClick={() => setTooltipModal({ visible: false, text: "" })}
-          >
-            OK
-          </button>
-        </div>
-      )}
     </div>
   );
 };
