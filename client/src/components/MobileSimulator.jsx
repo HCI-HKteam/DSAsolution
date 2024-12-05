@@ -18,7 +18,7 @@ const MobileAppSimulator = ({children}) => {
       </header>
 
       {/* Main Content */}
-      <main className="mobile-content flex-grow-1 bg-light d-flex flex-column align-items-center overflow-auto">
+      <main className="mobile-content flex-grow-1 bg-light d-flex flex-column align-items-center">
         {footerOption === "Home" && (
           <HomePage setFooterOption={setFooterOption} />
         )}

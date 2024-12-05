@@ -10,9 +10,8 @@ const CreateGroup = ({ setFooterOption }) => {
     visible: false,
     text: "",
   });
-  const [mandatoryNoteClass, setMandatoryNoteClass] = useState(
-    "form-items text-muted"
-  );
+
+  const [error, setError] = useState(false);
 
   const handleCreate = async (e) => {
     e.preventDefault();
@@ -27,7 +26,7 @@ const CreateGroup = ({ setFooterOption }) => {
     const joined = false;
 
     if (!name || !university || !level || !SLD) {
-      setMandatoryNoteClass("form-items text-danger");
+      setError(true);
       setMandatoryWarningVisible(true);
       return;
     }
@@ -53,7 +52,6 @@ const CreateGroup = ({ setFooterOption }) => {
       {/* Header */}
       <div className="d-flex align-items-center mb-3">
         <FaArrowLeft
-          className="me-2"
           style={{ cursor: "pointer" }}
           onClick={() => setFooterOption("Home")}
         />
@@ -62,17 +60,17 @@ const CreateGroup = ({ setFooterOption }) => {
       <hr />
 
       {/* Form */}
-      <form onSubmit={handleCreate}>
+      <form onSubmit={handleCreate} className="mb-2 scrollable-page">
         {/* Picture Upload and Group Details */}
         <div className="row mb-3">
-          <div className="col-md-4 text-center">
+          <div className="col-md-4 text-center" style={{ marginTop: "10px" }}>
             <div
-              className="form-items border border-2 rounded d-flex align-items-center justify-content-center"
+              className="form-items border d-flex align-items-center justify-content-center"
               style={{
                 width: "80px",
-                height: "100px",
-                backgroundColor: "#f8f9fa",
-                margin: "0 auto",
+                height: "80px",
+                backgroundColor: "#3cacae43",
+                borderRadius: "50%",
               }}
             >
               <span>+ Add</span>
@@ -93,7 +91,9 @@ const CreateGroup = ({ setFooterOption }) => {
               <input
                 type="text"
                 id="group-name"
-                className="form-items form-control"
+                className={`form-control form-items ${
+                  error && "border-danger"
+                }`}
                 placeholder="Enter group name"
               />
             </div>
@@ -104,7 +104,9 @@ const CreateGroup = ({ setFooterOption }) => {
               <input
                 type="text"
                 id="university"
-                className="form-items form-control"
+                className={`form-control form-items ${
+                  error && "border-danger"
+                }`}
                 placeholder="Enter university name"
               />
             </div>
@@ -130,7 +132,10 @@ const CreateGroup = ({ setFooterOption }) => {
                 }
               />
             </label>
-            <select id="level" className="form-items form-control">
+            <select
+              id="level"
+              className={`form-control form-items ${error && "border-danger"}`}
+            >
               <option value="">Select level</option>
               <option value="Beginner">Beginner</option>
               <option value="Intermediate">Intermediate</option>
@@ -158,7 +163,12 @@ const CreateGroup = ({ setFooterOption }) => {
                 }
               />
             </label>
-            <select id="special-needs" className="form-items form-control form-label">
+            <select
+              id="special-needs"
+              className={`form-control form-items form-label ${
+                error && "border-danger"
+              }`}
+            >
               <option value="">Select special need</option>
               <option value="Dyslexia">Dyslexia</option>
               <option value="Dysgraphia">Dysgraphia</option>
@@ -215,7 +225,9 @@ const CreateGroup = ({ setFooterOption }) => {
         </div>
 
         {/* Mandatory Note */}
-        <p className={mandatoryNoteClass}>* Mandatory fields to fill.</p>
+        <p className={`form-items ${error ? "text-danger" : "text-muted"}`}>
+          * Mandatory fields to fill.
+        </p>
 
         {/* Create Button */}
         <div className="text-center mb-3">
@@ -235,7 +247,7 @@ const CreateGroup = ({ setFooterOption }) => {
             transform: "translate(-50%, -50%)",
             width: "250px",
             padding: "20px",
-            backgroundColor: "#fff",
+            backgroundColor: "#c4eaed",
             boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
             borderRadius: "8px",
             zIndex: 1000,
@@ -261,7 +273,7 @@ const CreateGroup = ({ setFooterOption }) => {
             transform: "translate(-50%, -50%)",
             width: "250px",
             padding: "20px",
-            backgroundColor: "#fff",
+            backgroundColor: "#c4eaed",
             boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
             borderRadius: "8px",
             zIndex: 1000,
