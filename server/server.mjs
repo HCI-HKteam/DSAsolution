@@ -6,8 +6,7 @@ import LocalStrategy from 'passport-local';
 import session from 'express-session';
 import db from './db.mjs'; // Assuming db is correctly exported from db.mjs
 import { 
-  getAllGroups, 
-  getUsers, 
+  getAllGroups,  
   getChallenges, 
   getGroupByLabel, 
   leaveGroup, 
@@ -15,7 +14,6 @@ import {
   addGroup, 
   getGroupById, 
   getGroupBySLD, 
-  getUserByLevel 
 } from './dao-DSA.mjs';
 
 const app = express();

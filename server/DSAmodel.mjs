@@ -37,4 +37,4 @@ function Challenge(id) {
 
 export default group;
 
-export { user, Challenge };
+export { Challenge };
