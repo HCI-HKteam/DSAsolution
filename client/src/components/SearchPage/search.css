@@ -108,3 +108,24 @@
   transform: scale(1.1); /* Slight zoom effect on hover */
   background-color: #9fe7ed; /* Lighten the background on hover */
 }
+
+
+.help-icon {
+  background-color: #c26dbc;
+  color: #ecdfeb;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-size: 24px;
+  transition: transform 0.2s;
+}
+
+  .help-icon:hover {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+    background-color: #9fe7ed; /* Lighten the background on hover */
+  }
