@@ -8,7 +8,6 @@ import SearchPage from "./components/SearchPage/Search";
 function App() {
   
     return (
-      <Router>
       <div className="d-flex justify-content-center align-items-center vh-100 bg-light">
         {/* Passa le rotte come children */}
         <MobileAppSimulator>
@@ -21,7 +20,6 @@ function App() {
           </Routes>
         </MobileAppSimulator>
       </div>
-    </Router>
   );
   }
 export default App;
