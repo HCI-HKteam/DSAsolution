@@ -16,6 +16,21 @@ async function getAllGroups() {
   }
 }
 
+
+async function getUsers() {
+  try {
+    const response = await fetch(`${BASE_URL}/users`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch users');
+    }
+    const users = await response.json();
+    return users;
+  } catch (err) {
+    console.error(err);
+    return null;
+  }
+}
+
 // Function to fetch all challenges
 async function getChallenges() {
   try {

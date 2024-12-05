@@ -8,6 +8,7 @@ import ProfilePage from "./components/Profile/Profile";
 function App() {
   
     return (
+      
       <div className="d-flex justify-content-center align-items-center vh-100 bg-light">
         {/* Passa le rotte come children */}
         <MobileAppSimulator>
@@ -16,11 +17,11 @@ function App() {
             <Route index element={<HomePage />} />
             {/* GroupPage route with dynamic group name */}
             <Route path='/search' element={<SearchPage />}/>
-            <Route path='/profile' element={<ProfilePage />} />
-            <Route path='/software-engineering' element={<GroupPage />} />
+            <Route path='/group' element={<GroupPage />} />
           </Routes>
         </MobileAppSimulator>
       </div>
+    
   );
   }
 export default App;
