@@ -1,8 +1,6 @@
 import { url } from 'inspector';
 import db from './db.mjs';
-import group from './DSAmodel.mjs';
-import user from './DSAmodel.mjs';
-import Challenge from './DSAmodel.mjs';
+import { group, user, Challenge } from './DSAmodel.mjs';
 
 // Funzione per ottenere tutti i gruppi
 export function getAllGroups(db) {
