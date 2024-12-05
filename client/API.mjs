@@ -16,7 +16,7 @@ async function getAllGroups() {
   }
 }
 
-// Function to fetch all users
+
 async function getUsers() {
   try {
     const response = await fetch(`${BASE_URL}/users`);
@@ -149,48 +149,8 @@ async function getGroupBySLD(SLD) {
   }
 }
 
-// Function to log in a user
-async function loginUser(username, password) {
-  try {
-    const response = await fetch(`${BASE_URL}/login`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ username, password }),
-    });
-    if (response.ok) {
-      const result = await response.json();
-      console.log('Login successful', result);
-      return result;
-    } else {
-      throw new Error('Login failed');
-    }
-  } catch (err) {
-    console.error(err);
-    return null;
-  }
-}
-
-// Function to get the logged-in user's profile
-async function getProfile() {
-  try {
-    const response = await fetch(`${BASE_URL}/profile`);
-    if (response.ok) {
-      const user = await response.json();
-      return user;
-    } else {
-      throw new Error('Not authenticated');
-    }
-  } catch (err) {
-    console.error(err);
-    return null;
-  }
-}
-
 export {
   getAllGroups,
-  getUsers,
   getChallenges,
   getGroupsByLabel,
   joinGroup,
@@ -198,8 +158,6 @@ export {
   addGroup,
   getGroupByName,
   getGroupBySLD,
-  loginUser,
-  getProfile,
 };
 
 

@@ -1,6 +1,6 @@
 function group(id, name, level, university, SLD, description, picture, numberOfPartecipants, joined) {
     this.id = id;
-    this.name =  name;
+    this.name = name;
     this.level = level;
     this.university = university;
     this.SLD = SLD;
@@ -8,14 +8,6 @@ function group(id, name, level, university, SLD, description, picture, numberOfP
     this.picture = picture;
     this.numberOfPartecipants = numberOfPartecipants;
     this.joined = joined;
-}
-
-function user(id){
-    this.id = id;
-    this.name = "";
-    this.surname = "";
-    this.university = "";
-    this.SLD = [];
 }
 
 function Challenge(id) {
@@ -43,4 +35,6 @@ function Challenge(id) {
     };
 }
 
-export { group, user, Challenge };
+export default group;
+
+export { Challenge };
